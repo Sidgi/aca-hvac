@@ -49,7 +49,7 @@ export default function AboutUs() {
   return (
 	<>
 		<h1 style={{textAlign:'center', margin:'5em 0'}}>Our Team</h1>
-		<Card sx={{ maxWidth: 345 }}>
+		<Card sx={{ maxWidth: 345, margin: '5em' }}>
 		<CardHeader
 			avatar={
 			<Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
