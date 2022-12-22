@@ -6,9 +6,9 @@ require("dotenv").config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `ACA HVAC`,
+    title: `TEST DEMO`,
     siteUrl: `https://example.com`,
-    description: "Site for ACA HVAC",
+    description: "Site for TEST DEMO",
     copyright: "SVS NYC 2023"
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.

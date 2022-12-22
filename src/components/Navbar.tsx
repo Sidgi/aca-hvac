@@ -14,7 +14,7 @@ export default function Navbar() {
 		<nav>
 			<Link to='/' style={{display:'flex', alignItems:'center', height: '40px', color:'black'}}>
 				<Logo/>
-				<Typography variant='h5'>ACA HVAC</Typography>
+				<Typography variant='h5'>TEST DEMO</Typography>
 			</Link>
 			<div className='links'>
 				<Link className='nav-item' to="/">Home</Link>
