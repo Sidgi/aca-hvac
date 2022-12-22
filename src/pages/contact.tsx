@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from '@emotion/styled';
 import Maps from "../components/Maps";
 import { ContactInformation } from "../components/molecules";
@@ -14,6 +14,8 @@ import { Typography } from "@mui/material";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
+import emailjs from '@emailjs/browser';
+
 
 const DivComponent = styled.div`
   text-align: center;
@@ -30,6 +32,28 @@ const ContactComponent = {
 export default function Contact() {
   const [st, setSt] = useState("ny");
   const [isVerified, setIsVerified] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [message, setMessage] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [zipCity, setCity] = useState("");
+
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_cd4xjoo', 'H2XQS5B-jBqsKs8aUyrLp', form.current, 'ztvNfuJ3TprLZZxKW')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   const handleChange = (event) => {
     setSt(event.target.value);
@@ -67,14 +91,14 @@ export default function Contact() {
               <PhoneEnabledIcon style={ContactComponent}
               />
               <h3>PHONE NUMBER</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+              <p><a href={`tel:+15445455444`}>+15445455444</a></p>
             </DivComponent>
         </Grid>      
         <Grid item xs={4}>
           <DivComponent style={{borderRight: 'none'}}>
               <EmailIcon style={ContactComponent}/>
               <h3>EMAIL</h3>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
+              <p><a href={`mailto:samanduyev@gmail.com`}>test@example.com</a></p>
           </DivComponent>
         </Grid>
       </Grid>
@@ -92,7 +116,7 @@ export default function Contact() {
             />
           </Grid>
         <Grid container>
-          <form>
+          <form ref={form} onSubmit={sendEmail}>
             <Grid item xs={12}>
               <Grid container justifyContent="center" spacing={2}>
                 <Grid item xs={11} md={6}>
@@ -100,11 +124,13 @@ export default function Contact() {
                     fullWidth
                     label="First Name"
                     required
+                    value={firstName}
                     type="text"
+                    onChange={(e)=>setFirstName(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={11} md={6}>
-                  <TextField fullWidth label="Last Name" required type="text" />
+                  <TextField fullWidth label="Last Name" value={lastName} required type="text" onChange={(e)=>setLastName(e.target.value)} />
                 </Grid>
                 <Grid item xs={11} md={6}>
                   <TextField
@@ -112,6 +138,8 @@ export default function Contact() {
                     label="Email"
                     required
                     type="email"
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
                   />
                 </Grid>
                 <Grid xs={11} md={6} item>
@@ -120,10 +148,12 @@ export default function Contact() {
                     label="Phone number"
                     required
                     type="number"
+                    value={phoneNumber}
+                    onChange={(e)=>setPhoneNumber(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={11} md={12}>
-                  <TextField fullWidth label="Address" required type="text" />
+                  <TextField fullWidth label="Address" required type="text" value={address} onChange={(e)=>setAddress(e.target.value)} />
                 </Grid>
                 <Grid item xs={11} md={4}>
                   <Select
@@ -138,13 +168,13 @@ export default function Contact() {
                   </Select>
                 </Grid>
                 <Grid item xs={11} md={4}>
-                  <TextField fullWidth label="City" />
+                  <TextField fullWidth label="City" value={zipCity} onChange={(e)=>setCity(e.target.value)}/>
                 </Grid>
                 <Grid item xs={11} md={4}>
-                  <TextField fullWidth label="ZIP code" />
+                  <TextField fullWidth label="ZIP code" value={zipCode} onChange={(e)=>setZipCode(e.target.value)}/>
                 </Grid>
                 <Grid item xs={11} md={12}>
-                  <TextField fullWidth rows={4} label="Message" multiline />
+                  <TextField fullWidth rows={4} label="Message" value={message} multiline onChange={(e)=> setMessage(e.target.value)}/>
                 </Grid>
               </Grid>
             </Grid>
