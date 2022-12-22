@@ -1,0 +1,175 @@
+import React, { useState } from "react";
+import styled from '@emotion/styled';
+import Maps from "../components/Maps";
+import { ContactInformation } from "../components/molecules";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import ReCAPTCHA from "react-google-recaptcha";
+import Layout from "../components/Layout";
+import { Typography } from "@mui/material";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import EmailIcon from '@mui/icons-material/Email';
+
+const DivComponent = styled.div`
+  text-align: center;
+  margin-top: 5em;
+  border-right: 1px solid #50d8af;
+`;
+
+const ContactComponent = {
+  fontSize: '48px',
+  display: 'inline-block',
+  marginBottom: '30',
+}
+
+export default function Contact() {
+  const [st, setSt] = useState("ny");
+
+  const handleChange = (event) => {
+    setSt(event.target.value);
+  };
+
+  const handleValidation = (event) => {
+    console.log(event);
+  };
+
+  return (
+    <Layout>
+      <div>
+        <Typography component="h3" variant="h3"> Contact Us </Typography>
+      </div>
+      <Grid container >
+        <Grid item xs={4}>
+            <DivComponent>
+              <LocationOnIcon style={ContactComponent}
+              />
+              <h3>ADDRESS</h3>
+              <address><p>A108 Adam Street, NY 535022, USA</p></address>
+            </DivComponent>
+        </Grid>     
+        <Grid item xs={4}>
+            <DivComponent>
+              <PhoneEnabledIcon style={ContactComponent}
+              />
+              <h3>PHONE NUMBER</h3>
+              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+            </DivComponent>
+        </Grid>      
+        <Grid item xs={4}>
+          <DivComponent style={{borderRight: 'none'}}>
+              <EmailIcon style={ContactComponent}/>
+              <h3>EMAIL</h3>
+              <p><a href="mailto:info@example.com">info@example.com</a></p>
+          </DivComponent>
+        </Grid>
+      </Grid>
+      <Grid >
+            <Maps
+              height="380"
+              width={"100%"}
+              src={
+                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6057.656200094997!2d-73.96912608365665!3d40.611616175107166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c244e8f0504275%3A0xe4011ccf116bf44c!2s1510%20Ocean%20Pkwy%2C%20Brooklyn%2C%20NY%2011230!5e0!3m2!1sen!2sus!4v1622082083935!5m2!1sen!2sus"
+              }
+              style={{
+                border: 0,
+                margin: " 0 auto",
+              }}
+            />
+          </Grid>
+        <Grid container>
+          <form>
+            <Grid item xs={12}>
+              <Grid container justifyContent="center" spacing={2}>
+                <Grid item xs={11} md={6}>
+                  <TextField
+                    fullWidth
+                    label="First Name"
+                    required
+                    type="text"
+                  />
+                </Grid>
+                <Grid item xs={11} md={6}>
+                  <TextField fullWidth label="Last Name" required type="text" />
+                </Grid>
+                <Grid item xs={11} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Email"
+                    required
+                    type="email"
+                  />
+                </Grid>
+                <Grid xs={11} md={6} item>
+                  <TextField
+                    fullWidth
+                    label="Phone number"
+                    required
+                    type="number"
+                  />
+                </Grid>
+                <Grid item xs={11} md={12}>
+                  <TextField fullWidth label="Address" required type="text" />
+                </Grid>
+                <Grid item xs={11} md={4}>
+                  <Select
+                    onChange={handleChange}
+                    value={st}
+                    fullWidth
+                    label="State"
+                  >
+                    <MenuItem value="ny"> NY </MenuItem>
+                    <MenuItem value="nj"> NJ </MenuItem>
+                    <MenuItem value="pa"> PA </MenuItem>
+                  </Select>
+                </Grid>
+                <Grid item xs={11} md={4}>
+                  <TextField fullWidth label="City" />
+                </Grid>
+                <Grid item xs={11} md={4}>
+                  <TextField fullWidth label="ZIP code" />
+                </Grid>
+                <Grid item xs={11} md={12}>
+                  <TextField fullWidth rows={4} label="Message" multiline />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={11} md={6} sx={{ marginTop: "2rem" }}>
+              <ReCAPTCHA
+                sitekey="6Lc7aJ0eAAAAAB_Q8gqh57dKT6C8JKGkW1CdHHBc"
+                onChange={handleValidation}
+              />
+            </Grid>
+            <Grid item xs={11} md={6} sx={{ marginTop: "2rem" }}>
+              <Button
+                className="g-recaptcha"
+                data-sitekey="reCAPTCHA_site_key"
+                data-callback="onSubmit"
+                data-action="submit"
+                variant="contained"
+                type="submit"
+              >
+                SEND A MESSAGE
+              </Button>
+            </Grid>
+          </form>
+        </Grid>
+        <br />
+        <Grid container sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-end",
+            }}
+          ></Grid>
+        </Grid>
+    </Layout>
+  );
+}

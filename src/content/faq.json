@@ -1,0 +1,42 @@
+[
+	{
+		"firstTopic": "Bofkid", 
+		"secondTopic": "Lomik",
+		"description": "
+			Bobik Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
+			feugiat. Aliquam eget maximus est, id dignissim quam.
+		"
+	},
+	{
+		firstTopic: "What is Shopify and how does it work?", 
+		secondTopic: "Secondary (optional)",
+		description:`
+			
+			Shopify is a complete commerce platform that lets you start, grow, and manage a business.
+
+			With Shopify, you can:
+
+			Create and customize an online store
+			Sell in multiple places, including web, mobile, social media, online marketplaces, brick-and-mortar locations, and pop-up shops
+			Manage products, inventory, payments, and shipping
+			Shopify is completely cloud-based and hosted, which means you don’t have to worry about upgrading or maintaining software or web servers. This gives you the flexibility to access and run your business from almost anywhere, including your mobile device.
+		`
+	},
+	{
+		firstTopic: "How much does Shopify cost?", 
+		secondTopic: "Secondary (optional)",
+		description:`
+			Try Shopify free for 3 days, no credit card required.
+
+			After your trial expires, choose a pricing plan that suits the size and stage of your business.
+		`
+	},
+	{
+		firstTopic: "You are currently not an owner", 
+		secondTopic: "Lobzikd",
+		description:`
+			Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
+			feugiat. Aliquam afdfdafdt maximus est, id dignissim quam.
+		`
+	}
+]
