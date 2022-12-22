@@ -48,7 +48,7 @@ export default function AboutUs() {
 
   return (
 	<>
-		<h1>Our Team</h1>
+		<h1 style={{textAlign:'center', margin:'5em 0'}}>Our Team</h1>
 		<Card sx={{ maxWidth: 345 }}>
 		<CardHeader
 			avatar={
@@ -123,9 +123,6 @@ export default function AboutUs() {
 			</CardContent>
 		</Collapse>
 		</Card>
-		<h1>Our History/Story</h1>
-		<h1>Our Mission</h1>
-		<h1>Our Values</h1>
 	</>
 
   );

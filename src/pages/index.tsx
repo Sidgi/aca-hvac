@@ -108,21 +108,7 @@ const IndexPage = () => {
       <Layout>
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
         <ul style={listStyles}>
-        <Button variant="text">Text</Button>
-          {links.map(link => (
-            <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-              <Box
-                sx={{
-                  p: 2,
-                  bgcolor: 'background.default',
-                  display: 'grid',
-                  gridTemplateColumns: { md: '1fr 1fr 1fr' },
-                  gap: 2,
-                }}
-              >
-              </Box>
-            </li>
-          ))}
+        <Typography style={{textAlign:'center'}} variant="h1">Home page</Typography>
         </ul>
       </Layout>
   )
