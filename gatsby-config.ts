@@ -6,8 +6,8 @@ require("dotenv").config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `ACA sobaka`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `ACA HVAC`,
+    siteUrl: `https://example.com`,
     description: "Site for ACA HVAC",
     copyright: "SVS NYC 2023"
   },
