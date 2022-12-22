@@ -29,6 +29,7 @@ const ContactComponent = {
 
 export default function Contact() {
   const [st, setSt] = useState("ny");
+  const [isVerified, setIsVerified] = useState(false);
 
   const handleChange = (event) => {
     setSt(event.target.value);
@@ -36,6 +37,14 @@ export default function Contact() {
 
   const handleValidation = (event) => {
     console.log(event);
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
+    };
+    fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GATSBY_RECAPTCHA_SECRET_KEY}response=${event}`, requestOptions)
+      .then(response=>response.json())
+      .then(data=> console.log('data - ', data))
+    setIsVerified(true)
   };
 
   return (
@@ -140,18 +149,16 @@ export default function Contact() {
             </Grid>
             <Grid item xs={11} md={6} sx={{ marginTop: "2rem" }}>
               <ReCAPTCHA
-                sitekey="6Lc7aJ0eAAAAAB_Q8gqh57dKT6C8JKGkW1CdHHBc"
+                sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY as string}
                 onChange={handleValidation}
               />
             </Grid>
             <Grid item xs={11} md={6} sx={{ marginTop: "2rem" }}>
               <Button
-                className="g-recaptcha"
-                data-sitekey="reCAPTCHA_site_key"
-                data-callback="onSubmit"
                 data-action="submit"
                 variant="contained"
                 type="submit"
+                disabled={!isVerified}
               >
                 SEND A MESSAGE
               </Button>
