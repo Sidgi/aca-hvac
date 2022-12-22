@@ -40,6 +40,7 @@ export default function Contact() {
     const requestOptions = {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
+      credentials: 'omit'
     };
     fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GATSBY_RECAPTCHA_SECRET_KEY}response=${event}`, requestOptions)
       .then(response=>response.json())
