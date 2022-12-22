@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, Script } from "gatsby"
+import { Script } from "gatsby"
 import Button from '@mui/material/Button';
 import Layout from "../components/Layout";
 import { Box, Paper, Typography } from "@mui/material";
@@ -101,17 +101,13 @@ type SiteInfoQuery = {
   }
 }
 
-const IndexPage = ({data}: SiteInfoQuery) => {
-
-  const {title, description} = data.site.siteMetadata;
+const IndexPage = () => {
 
   return (
 
       <Layout>
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
         <ul style={listStyles}>
-       { title && <Typography>{title}</Typography>}
-       { description && <Typography>{description}</Typography>}
         <Button variant="text">Text</Button>
           {links.map(link => (
             <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
@@ -139,16 +135,3 @@ const IndexPage = ({data}: SiteInfoQuery) => {
 
 export default IndexPage
 
-
-export const query = graphql`
-  query SiteInfo {
-    site {
-      siteMetadata {
-        siteUrl
-        title
-        description
-        copyright
-      }
-    }
-  }
-`

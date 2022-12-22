@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import React from 'react';
 import '../styles/css/navBar.css';
 import Logo from './Logo';
@@ -9,18 +9,6 @@ export default function Navbar() {
 
 	const handleClick = () => setClick(!click);
 	const Close = () => setClick(false);
-
-	const data = useStaticQuery(graphql`
-		query SiteInfo {
-			site {
-				siteMetadata {
-					title
-				}
-			}
-		}
-	`)
-
-	const {title} = data.site.siteMetadata;
 
 	return (
 		<nav>
