@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import styled from '@emotion/styled';
 import Maps from "../components/Maps";
 import { ContactInformation } from "../components/molecules";
@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import ReCAPTCHA from "react-google-recaptcha";
 import Layout from "../components/Layout";
@@ -15,6 +15,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
 import emailjs from '@emailjs/browser';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 
 const DivComponent = styled.div`
@@ -29,6 +30,14 @@ const ContactComponent = {
   marginBottom: '30',
 }
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref,
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+
 export default function Contact() {
   const [st, setSt] = useState("ny");
   const [isVerified, setIsVerified] = useState(false);
@@ -36,37 +45,49 @@ export default function Contact() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
   const [message, setMessage] = useState("");
   const [address, setAddress] = useState("");
   const [zipCode, setZipCode] = useState("");
+  const [zipError, setZipError] = useState(false);
   const [zipCity, setCity] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-
-  const form = useRef();
+  const form = useRef("");
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    console.log(form.current, 'this is form')
     emailjs.sendForm('service_cd4xjoo', 'template_x3y0gtm', form.current, 'ztvNfuJ3TprLZZxKW')
       .then((result) => {
           console.log(result.text);
+          setShowSuccess(true)
+          setShowError(false)
       }, (error) => {
+          setShowSuccess(false)
+          setShowError(true)
           console.log(error.text);
-      });
+    });
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
     setSt(event.target.value);
   };
 
-  const handleValidation = (event) => {
-    console.log(event);
+  const handleValidation = (token: string | null): (void | undefined) => {
+    console.log(token);
     const requestOptions = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" },
-      credentials: 'omit'
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json', 
+        "Access-Control-Allow-Origin": "*" ,
+        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
+      },
     };
-    fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GATSBY_RECAPTCHA_SECRET_KEY}response=${event}`, requestOptions)
+    fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GATSBY_RECAPTCHA_SECRET_KEY}response=${token}`, requestOptions)
       .then(response=>response.json())
       .then(data=> console.log('data - ', data))
     setIsVerified(true)
@@ -74,6 +95,8 @@ export default function Contact() {
 
   return (
     <Layout>
+      {showSuccess && <Alert severity="success">This is a success message!</Alert>}
+      {showError && <Alert severity="error">Sorry sending email failed. Please try again!</Alert>}
       <div>
         <Typography component="h3" variant="h3"> Contact Us </Typography>
       </div>
@@ -147,9 +170,20 @@ export default function Contact() {
                     fullWidth
                     label="Phone number"
                     required
-                    type="number"
+                    type="string"
                     value={phoneNumber}
-                    onChange={(e)=>setPhoneNumber(e.target.value)}
+                    onChange={(e)=>{
+                      const phoneNumberRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                      if(e.target.value.match(phoneNumberRegex)) {
+                        setPhoneNumberError(false)
+                      }
+                      else{
+                        setPhoneNumberError(true)
+                      }
+                      setPhoneNumber(e.target.value)
+                    }}
+                    error={phoneNumberError}
+                    helperText={phoneNumberError && "Please follow format xxx-xxx-xxxx"}
                   />
                 </Grid>
                 <Grid item xs={11} md={12}>
@@ -171,7 +205,19 @@ export default function Contact() {
                   <TextField fullWidth label="City" value={zipCity} onChange={(e)=>setCity(e.target.value)}/>
                 </Grid>
                 <Grid item xs={11} md={4}>
-                  <TextField fullWidth label="ZIP code" value={zipCode} onChange={(e)=>setZipCode(e.target.value)}/>
+                  <TextField fullWidth label="ZIP code" value={zipCode} onChange={(e)=>{
+                      const zipValidation = /(^\d{5}$)|(^\d{9}$)|(^\d{5}-\d{4}$)/
+                      if(e.target.value.match(zipValidation)) {
+                        setZipError(false)
+                      }
+                      else{
+                        setZipError(true)
+                      }
+                      setZipCode(e.target.value)            
+                    }}
+                    error={zipError}
+                    helperText={zipError && `Please follow format xxxxx or xxxxx-xxxx`}
+                  />
                 </Grid>
                 <Grid item xs={11} md={12}>
                   <TextField fullWidth rows={4} label="Message" value={message} multiline onChange={(e)=> setMessage(e.target.value)}/>
