@@ -56,9 +56,26 @@ export default function Contact() {
 
   const form = useRef("");
 
+
+  const clearTheForm = () =>{
+      setSt("ny");
+      setIsVerified(false);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setMessage("");
+      setPhoneNumber("");
+      setPhoneNumberError(false);
+      setMessage("");
+      setAddress("");
+      setZipCode("");
+      setZipError(false);
+      setCity("")
+
+  }
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(form.current, 'this is form')
+    console.log(e.target, 'this is form')
     emailjs.sendForm('service_cd4xjoo', 'template_x3y0gtm', form.current, 'ztvNfuJ3TprLZZxKW')
       .then((result) => {
           console.log(result.text);
@@ -69,6 +86,7 @@ export default function Contact() {
           setShowError(true)
           console.log(error.text);
     });
+    clearTheForm()
   };
 
   const handleChange = (event: SelectChangeEvent<string>) => {
@@ -81,16 +99,27 @@ export default function Contact() {
     const requestOptions = {
       method: 'POST',
       headers: { 
-        'Content-Type': 'application/json', 
-        "Access-Control-Allow-Origin": "*" ,
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With"
+        "Referer":"aca-hvac-2022.netlify.app",
+        "Access-Control-Allow-Origin": "aca-hvac-2022.netlify.app" ,
+        "Vary": "Origin",
+        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS, PUT",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+        "Access-Control-Max-Age": "86400"
       },
+      params:{
+        secret: process.env.GATSBY_RECAPTCHA_SECRET_KEY,
+        response: token
+      }
     };
-    fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.GATSBY_RECAPTCHA_SECRET_KEY}response=${token}`, requestOptions)
+    try{
+      fetch(`https://www.google.com/recaptcha/api/siteverify`, requestOptions)
       .then(response=>response.json())
       .then(data=> console.log('data - ', data))
-    setIsVerified(true)
+      setIsVerified(true)
+    }catch(err){
+      console.log(err, 'this is error')
+    }
+
   };
 
   return (
