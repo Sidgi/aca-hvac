@@ -1,24 +1,40 @@
 import { Typography } from '@mui/material';
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
 import '../styles/css/navBar.css';
 import Logo from './Logo';
 
-export default function Navbar(data){
+export default function Navbar(){
 	const [click, setClick] = React.useState(false);
-	const { markdownRemark } = data 
-	console.log(markdownRemark, 'markdown')
 
 	const handleClick = () => setClick(!click);
 	const Close = () => setClick(false);
 
+	const data = useStaticQuery(
+		graphql`
+			query {
+				markdownRemark {
+					frontmatter {
+						title
+						pageName
+					}
+				}
+			}
+		`
+	);
+	const {title, pageName} = data?.markdownRemark?.frontmatter;
+
+	console.log(data, 'data')
 	return (
 		<nav>
 			<Link to='/' style={{display:'flex', alignItems:'center', height: '40px', color:'black'}}>
 				<Logo/>
-				<Typography variant='h5'>{"hello"}</Typography>
+				<Typography variant='h5'>{title}</Typography>
 			</Link>
 			<div className='links'>
+				{pageName?.map(page=>(
+					<Link className='nav-item' to="/">{page}</Link>
+				))}
 				<Link className='nav-item' to="/">Home</Link>
 				<Link className='nav-item' to="/about">About</Link>
 				<Link className='nav-item' to="/">Portfolio</Link>
@@ -29,13 +45,3 @@ export default function Navbar(data){
 		</nav>
   )
 }
-
-export const pageQuery = graphql`
-  query($path: String!) {
-	markdownRemark(frontmatter: { path: { eq: $path } }) {
-      frontmatter {
-        title
-      }
-    }
-  }
-`

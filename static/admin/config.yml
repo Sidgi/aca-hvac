@@ -22,9 +22,9 @@ collections:
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'navbar'
+  - name: 'Navbar'
     label: 'Navigation Bar'
-    folder: 'content/navbar' 
+    folder: 'content/Navbar' 
     create: true
     slug: "{{slug}}"
     media_folder: '/images'
@@ -33,6 +33,16 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Slug', name: 'slag', widget: 'string'}
-      - { label: 'Page name', name: 'pageName', widget: 'list', allow_add: true, default: ["About", "Portfolio", "Gallery", "Contact", "Services"] }
+      - label: 'Pages'
+        name: 'pages'
+        widget: 'list' 
+        allow_add: true
+        fields: 
+          - { label: 'Page name', name: pageName, widget: string}
+          - { label: 'Url', name: src, widget: string}
+        default: 
+          - { pageName: "About", src: "/about"}
+          - { pageName: "Portfolio", src: "/portfolio"}
+          - { pageName: "Gallery", src: "/gallery"}
+          - { pageName: "Services", src: "/services"}
+    
