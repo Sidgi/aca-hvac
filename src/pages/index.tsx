@@ -108,7 +108,7 @@ const IndexPage = () => {
       <Layout>
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
         <ul style={listStyles}>
-        <Typography style={{textAlign:'center'}} variant="h1">Apollo page</Typography>
+        <Typography style={{textAlign:'center'}} variant="h1">ACA HVAC</Typography>
         </ul>
       </Layout>
   )
