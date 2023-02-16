@@ -34,7 +34,5 @@ collections:
       preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Slug', name: 'slag', widget: 'string'}
       - { label: 'Page name', name: 'pageName', widget: 'list', allow_add: true, default: ["About", "Portfolio", "Gallery", "Contact", "Services"] }
-      - { label: 'Image', name: 'image', widget: 'image' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }

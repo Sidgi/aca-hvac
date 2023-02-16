@@ -4,8 +4,10 @@ import React from 'react';
 import '../styles/css/navBar.css';
 import Logo from './Logo';
 
-export default function Navbar() {
+export default function Navbar(data){
 	const [click, setClick] = React.useState(false);
+	const { markdownRemark } = data 
+	console.log(markdownRemark, 'markdown')
 
 	const handleClick = () => setClick(!click);
 	const Close = () => setClick(false);
@@ -14,7 +16,7 @@ export default function Navbar() {
 		<nav>
 			<Link to='/' style={{display:'flex', alignItems:'center', height: '40px', color:'black'}}>
 				<Logo/>
-				<Typography variant='h5'>TEST DEMO</Typography>
+				<Typography variant='h5'>{"hello"}</Typography>
 			</Link>
 			<div className='links'>
 				<Link className='nav-item' to="/">Home</Link>
@@ -28,4 +30,12 @@ export default function Navbar() {
   )
 }
 
-
+export const pageQuery = graphql`
+  query($path: String!) {
+	markdownRemark(frontmatter: { path: { eq: $path } }) {
+      frontmatter {
+        title
+      }
+    }
+  }
+`
