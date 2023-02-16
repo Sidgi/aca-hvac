@@ -29,7 +29,7 @@ export default function Navbar(){
 		<nav>
 			<Link to='/' style={{display:'flex', alignItems:'center', height: '40px', color:'black'}}>
 				<Logo/>
-				<Typography variant='h5'>{title}</Typography>
+				<Typography variant='h5'>ACA HVAC</Typography>
 			</Link>
 			<div className='links'>
 				{pageName?.map(page=>(
