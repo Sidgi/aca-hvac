@@ -1,28 +1,37 @@
 import { Typography } from '@mui/material';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import { stringify } from 'querystring';
 import React from 'react';
 import '../styles/css/navBar.css';
 import Logo from './Logo';
 
 export default function Navbar(){
-	const [click, setClick] = React.useState(false);
 
-	const handleClick = () => setClick(!click);
-	const Close = () => setClick(false);
+	type datagraphql = {
+		markdownRemark: {
+			frontmatter: {
+				pages: [
+					{pageName: string, src: string}
+				]
+			}
+		}
+	}
 
-	const data = useStaticQuery(
+	const data: datagraphql = useStaticQuery(
 		graphql`
 			query {
-				markdownRemark {
+				markdownRemark(fileAbsolutePath: { regex: "/pages-list/" }) {
 					frontmatter {
-						title
+					pages{
 						pageName
+						src
+					}
 					}
 				}
 			}
 		`
 	);
-	const {title, pageName} = data?.markdownRemark?.frontmatter;
+	const { pages } = data?.markdownRemark?.frontmatter;
 
 	console.log(data, 'data')
 	return (
@@ -32,15 +41,9 @@ export default function Navbar(){
 				<Typography variant='h5'>ACA HVAC</Typography>
 			</Link>
 			<div className='links'>
-				{pageName?.map(page=>(
-					<Link className='nav-item' to="/">{page}</Link>
+				{pages?.map(_=>(
+					<Link className='nav-item' to={_.src}>{_.pageName}</Link>
 				))}
-				<Link className='nav-item' to="/">Home</Link>
-				<Link className='nav-item' to="/about">About</Link>
-				<Link className='nav-item' to="/">Portfolio</Link>
-				<Link className='nav-item' to="/gallery">Gallery</Link>
-				<Link className='nav-item' to="/contact">Contact</Link>
-				<Link className='nav-item' to="/services">Services</Link>
 			</div>
 		</nav>
   )
