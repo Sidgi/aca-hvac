@@ -10,4 +10,6 @@ pages:
     src: /services
   - pageName: dfsdf
     src: /sdfsdfsf
+  - pageName: Test Fima
+    src: /testfima
 ---
