@@ -44,5 +44,4 @@ collections:
           - { pageName: "Portfolio", src: "/portfolio"}
           - { pageName: "Gallery", src: "/gallery"}
           - { pageName: "Services", src: "/services"}
-          - { pageName: "FAQ", src: "/faq"}
     
