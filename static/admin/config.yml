@@ -21,8 +21,6 @@ collections:
       - { label: 'Name', name: 'name', widget: 'string' }
       - { label: 'Position', name: 'position', widget: 'string' }
       - { label: 'Image', name: 'img', widget: 'image' }
-    default: 
-      - { name: "Yefim Ferits", position: "CEO", img: ""}
   - name: 'portfolio'
     label: 'Portfolio'
     folder: 'content/portfolio' 
