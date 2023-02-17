@@ -6,20 +6,19 @@ media_folder: static/images
 public_folder: /images 
 
 collections:
-  - name: 'team'
+  - name: 'teams'
     label: 'Team'
-    folder: 'content/team' 
+    folder: 'content/teams' 
     create: true
     slug: "{{slug}}"
     media_folder: '/images'
     public_folder: '/public'
     path: '{{title}}/index'
-    allow_add: true
     editor:
       preview: true
     fields:
       - { label: 'Name', name: 'name', widget: 'string' }
-      - { label: 'Position', name: 'position', widget: 'string' }
+      - { label: Company Position', name: 'cposition', widget: 'string' }
       - { label: 'Image', name: 'img', widget: 'image' }
   - name: 'portfolio'
     label: 'Portfolio'
