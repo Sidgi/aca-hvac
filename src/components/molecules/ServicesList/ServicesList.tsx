@@ -56,7 +56,6 @@ const ServicesList = () => {
           <p className="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum rideta zanox satirente madera</p>
         </div>
       </div>
-      <Pricing/>
     </div>
       </Box>
     </div>

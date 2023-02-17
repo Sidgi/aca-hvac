@@ -1,14 +1,14 @@
 import { Typography } from '@mui/material'
 import React from 'react'
-import Gallery from '../components/Gallery'
+import Portfolio from '../components/Portfolio'
 import Layout from '../components/Layout'
 import CarouselComponent from '../components/molecules/Carousel'
 
 
-export default function gallery() {
+export default function portfolio() {
   return (
-	  <Layout>
-      <Gallery/>
+	<Layout>      
+      <Portfolio/>
     </Layout>
   )
 }

@@ -1,5 +1,7 @@
 ---
 pages:
+  - pageName: Home
+    src: /
   - pageName: About
     src: /about
   - pageName: Portfolio
@@ -8,8 +10,4 @@ pages:
     src: /gallery
   - pageName: Services
     src: /services
-  - pageName: dfsdf
-    src: /sdfsdfsf
-  - pageName: Test Fima
-    src: /testfima
 ---

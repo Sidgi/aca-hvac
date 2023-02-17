@@ -1,5 +1,8 @@
 import React from 'react'
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Grid  from '@mui/material/Grid';
 import AboutImage from '../../static/images/AboutUs1.jpg';
 import styled from '@emotion/styled';
@@ -48,81 +51,90 @@ export default function AboutUs() {
 
   return (
 	<>
-		<h1 style={{textAlign:'center', margin:'5em 0'}}>Our Team</h1>
-		<Card sx={{ maxWidth: 345, margin: '5em' }}>
-		<CardHeader
-			avatar={
-			<Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-				BR
-			</Avatar>
-			}
-			action={
-			<IconButton aria-label="settings">
-				<MoreVertIcon />
-			</IconButton>
-			}
-			title="Shrimp and Chorizo Paella"
-			subheader="September 14, 2016"
-		/>
-		<CardMedia
-			component="img"
-			height="194"
-			image={AboutImage}
-			alt="Paella dish"
-		/>
-		<CardContent>
-			<Typography variant="body2" color="text.secondary">
-			This impressive paella is a perfect party dish and a fun meal to cook
-			together with your guests. Add 1 cup of frozen peas along with the mussels,
-			if you like.
-			</Typography>
-		</CardContent>
-		<CardActions disableSpacing>
-			<IconButton aria-label="add to favorites">
-			<FavoriteIcon />
-			</IconButton>
-			<IconButton aria-label="share">
-			<ShareIcon />
-			</IconButton>
-			<ExpandMore
-			expand={expanded}
-			onClick={handleExpandClick}
-			aria-expanded={expanded}
-			aria-label="show more"
-			>
-			<ExpandMoreIcon />
-			</ExpandMore>
-		</CardActions>
-		<Collapse in={expanded} timeout="auto" unmountOnExit>
-			<CardContent>
-			<Typography paragraph>Method:</Typography>
-			<Typography paragraph>
-				Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-				aside for 10 minutes.
-			</Typography>
-			<Typography paragraph>
-				Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
-				medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring
-				occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a
-				large plate and set aside, leaving chicken and chorizo in the pan. Add
-				pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
-				stirring often until thickened and fragrant, about 10 minutes. Add
-				saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-			</Typography>
-			<Typography paragraph>
-				Add rice and stir very gently to distribute. Top with artichokes and
-				peppers, and cook without stirring, until most of the liquid is absorbed,
-				15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
-				mussels, tucking them down into the rice, and cook again without
-				stirring, until mussels have opened and rice is just tender, 5 to 7
-				minutes more. (Discard any mussels that don&apos;t open.)
-			</Typography>
-			<Typography>
-				Set aside off of the heat to let rest for 10 minutes, and then serve.
-			</Typography>
-			</CardContent>
-		</Collapse>
-		</Card>
+		<Container maxWidth="lg">
+			<Grid container spacing={2} minHeight={160}>
+
+				<Grid xs display="flex" justifyContent="center" alignItems="center">
+
+				</Grid>
+				<Typography
+					variant="h5" 
+					align="left" 
+					color="text.primary"
+				>
+					At ACA HVAC, we believe that a business is only as good as the people behind it. That's why we want to take a moment to tell you a little bit about ourselves.
+					Our team is made up of passionate, skilled professionals who are committed to providing the best possible HVAC solutions to our clients. With years of experience in the industry, we have honed our expertise in everything from installations to repairs and maintenance.
+					But what truly sets us apart is our dedication to customer satisfaction. We understand that every client has unique needs, which is why we work closely with you to develop a customized solution that meets your specific requirements. We take the time to listen to your concerns and offer guidance and advice to help you make the best possible decisions for your home or business.
+					At the end of the day, we are here to make your life easier. We know that HVAC issues can be stressful and disruptive, and our goal is to provide a seamless, stress-free experience that leaves you feeling confident in your choice of provider.
+					So whether you need a new system installed, routine maintenance, or emergency repairs, you can count on ACA HVAC to deliver top-quality service with a personal touch. Contact us today to learn more about how we can help you keep your space comfortable year-round.
+				</Typography>
+			</Grid>
+
+		</Container>
+	    <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+              Meet Our Team
+            </Typography>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+              Something short and leading about the collection below—its contents,
+              the creator, etc. Make it short and sweet, but not too short so folks
+              don&apos;t simply skip over it entirely.
+            </Typography>
+          </Container>
+        </Box>
+		<Grid container spacing={2} minHeight={160}>
+			<Grid xs display="flex" justifyContent="center" alignItems="center">
+			<Card sx={{ maxWidth: 345, margin: '5em' }}>
+				<CardHeader
+					title="Yefim Ferits"
+					subheader="CEO"
+				/>
+				<Avatar src={AboutImage} sizes='20px'  sx={{ width: 200, height: 200, margin: '0 auto' }} aria-label="recipe">
+					BR
+				</Avatar>
+				<CardContent>
+					<Typography variant="body2" color="text.secondary">
+					This impressive paella is a perfect party dish and a fun meal to cook
+					together with your guests. Add 1 cup of frozen peas along with the mussels,
+					if you like.
+					</Typography>
+				</CardContent>
+				<CardActions disableSpacing>
+					<ExpandMore
+						expand={expanded}
+						onClick={handleExpandClick}
+						aria-expanded={expanded}
+						aria-label="show more"
+						title='Learn more'
+					>
+						<ExpandMoreIcon />
+					</ExpandMore>
+				</CardActions>
+				<Collapse in={expanded} timeout="auto" unmountOnExit>
+					<CardContent>
+					<Typography variant="body2" color="text.secondary">
+					This impressive paella is a perfect party dish and a fun meal to cook
+					together with your guests. Add 1 cup of frozen peas along with the mussels,
+					if you like.
+					</Typography>
+					</CardContent>
+				</Collapse>
+				</Card>
+			</Grid>
+		</Grid>
 	</>
 
   );
