@@ -6,23 +6,6 @@ media_folder: static/images
 public_folder: /images 
 
 collections:
-  - name: 'team'
-    label: 'Team'
-    folder: 'content/team' 
-    create: true
-    slug: "{{slug}}"
-    media_folder: '/images'
-    public_folder: '/public'
-    path: '{{title}}/index'
-    allow_add: true
-    editor:
-      preview: true
-    fields:
-      - { label: 'Name', name: 'name', widget: 'string' }
-      - { label: 'Position', name: 'position', widget: 'string' }
-      - { label: 'Image', name: 'img', widget: 'image' }
-    default: 
-      - { name: "Yefim Ferits", position: "CEO", img: ""}
   - name: 'portfolio'
     label: 'Portfolio'
     folder: 'content/portfolio' 

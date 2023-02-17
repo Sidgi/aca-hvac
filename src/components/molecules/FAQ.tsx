@@ -3,6 +3,8 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Autocomplete, Container, TextField } from "@mui/material";
 import { TopImage } from "../molecules/TopImage";
@@ -11,6 +13,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import styled from "@emotion/styled";
+import { Link } from "gatsby";
 
 const data = [
 	{
@@ -56,24 +59,29 @@ const data = [
 ]
 
   const ItemG = styled(Paper)(({ theme }) => ({
-	textAlign: 'center',
-	color: 'black',
+	// color: 'black',
 	height: '15em',
-	lineHeight: '60px',
-	display: 'flex',
-	justifyContent: 'center'
   }));
 
 
-export default function FAQ() {
+export default function SFAQ() {
   const [expanded, setExpanded] = useState("");
+
+  const [filteredData, setFilteredData] = useState(data);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent<Element, Event>, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : "");
   };
 
   const handleFilterChange = (event: React.SyntheticEvent<Element, Event>) =>{
-	console.log(event.target, 'Sidgi change')
+	const filteredList = event.target.dataset.testid !== "CloseIcon"? data.filter(_=>(
+		_.firstTopic === event.target.innerHTML
+	)) : data;
+	setFilteredData(filteredList);
+  }
+
+  const handleClose =  (event: React.SyntheticEvent<Element, Event>) =>{
+	setFilteredData(data);
   }
 
   return (
@@ -101,7 +109,7 @@ export default function FAQ() {
 						gridTemplateColumns: { md: '1fr' },
 					}}
 				>
-				{data.map((item, idx)=>{
+				{filteredData.map((item, idx)=>{
 					return(
 						<>
 							<Accordion
@@ -143,7 +151,18 @@ export default function FAQ() {
 					}}
 				>
 					<ItemG key={10} elevation={10}>
-						<Typography style={{display:'flex', flexDirection:'column', margin:'1em'}} variant="h4">Need more help?</Typography>
+						<Typography sx={{textAlign:'center', pt: 4}} variant="h4">Need more help?</Typography>
+						<Stack
+							sx={{ pt: 8 }}
+							direction="row"
+							spacing={2}
+							justifyContent="center"
+							>
+							<Link to="/contact"> 
+								<Button variant="contained">Contact US</Button>
+							</Link>
+							<Button variant="outlined">Schedule a service</Button>
+						</Stack>
 					</ItemG>
 				</Box>
 			</Grid>

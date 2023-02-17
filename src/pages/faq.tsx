@@ -4,6 +4,8 @@ import FAQ from '../components/molecules/FAQ'
 
 export default function faq() {
   return (
-	<Layout><FAQ/></Layout>
+	  <Layout>
+      <FAQ/>
+    </Layout>
   )
 }
