@@ -12,7 +12,17 @@ export default function Layout({children}) {
 			{children}
 		</div>
 		<Footer/>
-		<BasicSpeecDial/>
+		<div 
+			style={{
+				position: '-webkit-sticky',
+				position: 'sticky',
+				bottom: '0',
+				padding: '-50px',
+			}}
+		>
+			<BasicSpeecDial />
+		</div>
+	
 	</div>
   )
 }

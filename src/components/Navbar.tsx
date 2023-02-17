@@ -33,9 +33,14 @@ export default function Navbar(){
 	);
 	const { pages } = data?.markdownRemark?.frontmatter;
 
-	console.log(data, 'data')
 	return (
-		<nav>
+		<nav style={{
+			position: '-webkit-sticky',
+			position: 'sticky',
+			top: 0,
+			padding: '50px',
+			fontSize: '20px',
+		}}>
 			<Link to='/' style={{display:'flex', alignItems:'center', height: '40px', color:'black'}}>
 				<Logo/>
 				<Typography variant='h5'>ACA HVAC</Typography>
