@@ -36,9 +36,9 @@ collections:
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'Navbar'
+  - name: 'navbar'
     label: 'Navigation Bar'
-    folder: 'content/Navbar' 
+    folder: 'content/navbar' 
     create: true
     slug: "{{slug}}"
     media_folder: '/images'
