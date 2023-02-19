@@ -43,6 +43,7 @@ collections:
     slug: "{{slug}}"
     media_folder: '/images'
     public_folder: '/public'
+    path: '{{title}}/index'
     editor:
       preview: true
     fields:
@@ -58,5 +59,4 @@ collections:
           - { pageName: "Portfolio", src: "/portfolio"}
           - { pageName: "Gallery", src: "/gallery"}
           - { pageName: "Services", src: "/services"}
-          - { pageName: "FAQ", src: "/faq"}
     
