@@ -22,9 +22,9 @@ collections:
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'portfolio'
-    label: 'Portfolio'
-    folder: 'content/portfolio' 
+  - name: 'people'
+    label: 'People'
+    folder: 'content/people' 
     create: true
     slug: "{{slug}}"
     media_folder: '/images'
