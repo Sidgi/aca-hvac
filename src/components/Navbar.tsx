@@ -10,7 +10,7 @@ import Logo from './Logo';
 
 
 const NavItem = styled(Link)`
-color: ${(props: {newColor:boolean}) => (props.newColor? 'white' : 'inherited')};
+color: ${(props: {newColor:boolean}) => (props.newColor? 'white' : 'black')};
 line-height: 40px;
 margin-right: 1rem;
 &:hover {
@@ -33,6 +33,7 @@ margin-right: 1rem;
 	background: transparent;
 	transition: width 0.7s ease, background-color 0.5s ease, color 1s ease;
 }
+
 `;
 
 const Nav = styled.nav( (props:{newColor:boolean} )=> ({
