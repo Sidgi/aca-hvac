@@ -33,7 +33,7 @@ const Copyright = styled.div({
 })
 
 const StyledFooter = styled.footer`
-	background: radial-gradient(at top left,#3333FF 0%, rgba(43,9,107,1) 100%);
+	background: radial-gradient(at top left,#50505a 0%, #08050e 100%);
 	background-repeat: no-repeat;
 	color: white !important;
 	margin-top: 10em;

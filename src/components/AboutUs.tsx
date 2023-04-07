@@ -22,6 +22,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Divider } from '@mui/material';
+import {  graphql, useStaticQuery } from 'gatsby';
 
 
 
@@ -50,6 +51,23 @@ export default function AboutUs() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+	const data = useStaticQuery(
+		graphql`
+			query {
+				markdownRemark(fileAbsolutePath: { regex: "/people/" }) {
+					fileAbsolutePath
+					frontmatter {
+						title
+						job
+						image
+					}
+				}
+			}
+		`
+	);
+
+	console.log(data?.markdownRemark?.frontmatter, 'this is data')
 
   return (
 	<>

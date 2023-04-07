@@ -34,7 +34,6 @@ nav {
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin: 40px auto;
-  max-width: 1200px;
 }
 
 nav .links {
