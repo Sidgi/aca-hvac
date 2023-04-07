@@ -67,7 +67,7 @@ export default function Navbar(){
 		}
 	}
 
-	isBrowser()&& window.addEventListener('scroll', changeColor);
+	isBrowser()&&window.addEventListener('scroll', changeColor);
 
 	type datagraphql = {
 		markdownRemark: {
