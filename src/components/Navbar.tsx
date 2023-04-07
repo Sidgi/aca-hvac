@@ -82,16 +82,17 @@ export default function Navbar(){
 
 	const data: datagraphql = useStaticQuery(
 		graphql`
-			query {
-				markdownRemark(fileAbsolutePath: { regex: "/pages-list/" }) {
-					frontmatter {
-					pages{
-						pageName
-						src
-					}
-					}
+		query {
+			markdownRemark(fileAbsolutePath: { regex: "/navbar/"}){
+				  fileAbsolutePath
+			  frontmatter {
+				pages {
+				  pageName
+				  src
 				}
+			  }
 			}
+		  }
 		`
 	);
 	
