@@ -55,7 +55,11 @@ export default function Navbar(){
 
 	const [newColor, setNewColor] = useState(false);
 
+	const isBrowser = () => typeof window !== "undefined"
+
 	const changeColor = () => {
+		if(!isBrowser()) return
+
 		if(window.scrollY > 90){
 			setNewColor(true)
 		}else{
@@ -63,7 +67,7 @@ export default function Navbar(){
 		}
 	}
 
-	window.addEventListener('scroll', changeColor);
+	isBrowser()&& window.addEventListener('scroll', changeColor);
 
 	type datagraphql = {
 		markdownRemark: {
