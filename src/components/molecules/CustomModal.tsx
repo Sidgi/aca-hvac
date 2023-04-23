@@ -4,8 +4,8 @@ import Modal from '@mui/material/Modal';
 
 export default function CustomModal({open, setOpen, children, title}) {
   return (
-    <div>
       <Modal
+        style={{display:'flex', justifyContent:'center', flexDirection:'column', alignItems:'center'}}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
         open={open}
@@ -13,6 +13,5 @@ export default function CustomModal({open, setOpen, children, title}) {
       >
         {children}
       </Modal>
-    </div>
   );
 }

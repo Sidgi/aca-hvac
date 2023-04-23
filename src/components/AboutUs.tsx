@@ -27,7 +27,6 @@ import {  graphql, useStaticQuery } from 'gatsby';
 
 
 const GridContainer = styled.div`
-	
 	display: grid;
 `
 
@@ -46,11 +45,6 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 export default function AboutUs() {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
 	const data = useStaticQuery(
 		graphql`
@@ -66,8 +60,6 @@ export default function AboutUs() {
 			}
 		`
 	);
-
-	console.log(data?.markdownRemark?.frontmatter, 'this is data')
 
   return (
 	<>
@@ -136,7 +128,7 @@ export default function AboutUs() {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth='lg'>
             <Typography
               component="h1"
               variant="h2"
@@ -147,49 +139,31 @@ export default function AboutUs() {
               Meet Our Team
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+				At ACA HVAC, we're proud to have a diverse and talented team of professionals who are passionate about what they do. From our skilled technicians to our knowledgeable sales representatives, everyone on our team is dedicated to delivering the best possible service to our clients.
             </Typography>
           </Container>
         </Box>
 		<Grid container spacing={2} minHeight={160}>
 			<Grid xs display="flex" justifyContent="center" alignItems="center">
-			<Card sx={{ maxWidth: 345, margin: '5em' }}>
-				<CardHeader
-					title="Yefim Ferits"
-					subheader="CEO"
-				/>
-				<Avatar src={AboutImage} sizes='20px'  sx={{ width: 200, height: 200, margin: '0 auto' }} aria-label="recipe">
-					BR
-				</Avatar>
+				
+			<Card sx={{ maxWidth: 445, padding: '20px'}}>
+				<div style={{display:'flex', justifyContent:'flex-start' }}>
+					<Avatar src={AboutImage} sizes='20px'  sx={{ width: 100, height: 100 }} aria-label="recipe">
+						BR
+					</Avatar>
+					<CardHeader
+						title="Yefim Ferits"
+						subheader="CEO"
+					/>
+				</div>
+
 				<CardContent>
 					<Typography variant="body2" color="text.secondary">
-					This impressive paella is a perfect party dish and a fun meal to cook
-					together with your guests. Add 1 cup of frozen peas along with the mussels,
-					if you like.
+						Through their visionary leadership and dedication to excellence, our CEO has built a team of experts that are committed to delivering the best possible results for our clients. 
 					</Typography>
 				</CardContent>
 				<CardActions disableSpacing>
-					<ExpandMore
-						expand={expanded}
-						onClick={handleExpandClick}
-						aria-expanded={expanded}
-						aria-label="show more"
-						title='Learn more'
-					>
-						<ExpandMoreIcon />
-					</ExpandMore>
 				</CardActions>
-				<Collapse in={expanded} timeout="auto" unmountOnExit>
-					<CardContent>
-					<Typography variant="body2" color="text.secondary">
-					This impressive paella is a perfect party dish and a fun meal to cook
-					together with your guests. Add 1 cup of frozen peas along with the mussels,
-					if you like.
-					</Typography>
-					</CardContent>
-				</Collapse>
 				</Card>
 			</Grid>
 		</Grid>

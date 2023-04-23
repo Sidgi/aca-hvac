@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Layout from "../components/Layout";
 import { Box, Paper, Typography } from "@mui/material";
 import styled from "@emotion/styled";
+import { Home } from "../components/Home";
 
 const pageStyles = {
   color: "#232129",
@@ -107,9 +108,7 @@ const IndexPage = () => {
 
       <Layout>
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
-        <ul style={listStyles}>
-        <Typography style={{textAlign:'center'}} variant="h1">ACA HVAC</Typography>
-        </ul>
+        <Home/>
       </Layout>
   )
 }

@@ -8,15 +8,15 @@ import Logo from './Logo';
 const footers = [
 	{
 	  title: 'Company',
-	  description: ['Team', 'History', 'Contact us', 'FAQ'],
+	  description: [{name: 'Team', link: 'team'}, {name: 'History', link: 'history'},{name: 'Contact us', link: 'contact'}, {name: 'FAQ', link: 'faq'}],
 	},
 	{
 	  title: 'Services',
-	  description: ['Heating', 'Cooling', 'Testimonials', 'Final resource'],
+	  description: [{name:'Heating', link: ''},{name: 'Cooling', link: ''}, {name: 'Testimonials', link:''}, {name: 'Final resource', link:''}],
 	},
 	{
 	  title: 'Legal',
-	  description: ['Privacy policy', 'Terms of use'],
+	  description: [{ name:'Privacy policy', link: 'privacy' }, {name:'Terms of use', link: 'terms'}],
 	},
   ];
 
@@ -70,13 +70,13 @@ export default function Footer() {
 					{footers.map((footer, idx)=> (
 						<Grid item xs={3} sm={2} key={idx}>
 							<Typography variant="h6" color="white" gutterBottom>
-									{footer.title}
+								{footer.title}
 							</Typography>
 							<>
-								{footer.description.map((item:string) => (
-									<p key={item}>					
-										<Link style={{color: 'white'}} to='#'>
-											{item}
+								{footer.description.map((item) => (
+									<p key={item.name}>					
+										<Link style={{color: 'white'}} to={`/${item.link}`}>
+											{item.name}
 										</Link>
 									</p>
 								))}

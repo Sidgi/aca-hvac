@@ -17,11 +17,11 @@ margin-right: 1rem;
 	&:after{
 		width: 100%;
 		height: 2px;
-		background: black;
+		background: ${(props: {newColor:boolean}) => (props.newColor? 'white' : 'black')};
 	}
 }
 &:active {
-	color: #ffdd40;
+	/* color: red; */
 	border: none;
   }
 
