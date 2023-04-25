@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material'
+import { Container, Divider, Typography } from '@mui/material'
 import React from 'react'
 import Layout from '../components/Layout'
 import styled from '@emotion/styled'
@@ -34,7 +34,7 @@ const data = [
   }, 
   {
     title: 'Security of Your Information',
-    description: ` We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. 
+    description: `We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. 
     We use industry-standard security technologies and procedures to safeguard your information, 
     and we require our employees to maintain the confidentiality of your information.
     However, no method of transmission over the Internet, or method of electronic storage, is 100% secure. 
@@ -59,41 +59,44 @@ const data = [
       we will notify you by posting an updated privacy policy on our website or by other means.
     `
   },
-  {
-    title: 'Contact Us',
-    description: `
-      If you have any questions or concerns about this privacy policy, or if you wish to exercise your rights in relation to your personal information,
-      please contact us using the following information:
-    `
-  }
 ]
 
 const CustomizedTitle = styled(Typography)({
-  margin: '1em 0 1.5em 0'
+  margin: '1em 0 1em 0',
+  fontSize:'3em',
+  fontWeight:'500'
+
 })
 
 const CustomizedSectionTitle = styled(Typography)({
   margin: '1rem 0',
-  fontWeight: 'bolder',
+  // fontWeight: 'bolder',
+  fontSize:'2em',
+  fontWeight:'400'
+
+})
+
+const CustomizedSectionDescription = styled(Typography)({
+  margin: '1rem 0',
+  fontSize:'1em',
+  fontWeight:'400'
+
 })
 
 export default function privacy() {
   return (
 	<Layout>
     <Container maxWidth="lg">
-      <CustomizedTitle variant='h3'>Privacy Policy for HVAC Company</CustomizedTitle>
+      <CustomizedTitle variant='h1'>Privacy Policy for HVAC Company</CustomizedTitle>
+      <Divider/>
       {data.map((item)=>(
         <>
-          <CustomizedSectionTitle variant='h5'>{item.title}</CustomizedSectionTitle>
-          <Typography variant='h6'>
+          <CustomizedSectionTitle variant='h2'>{item.title}</CustomizedSectionTitle>
+          <CustomizedSectionDescription variant='h3'>
             {item.description}
-          </Typography>
+          </CustomizedSectionDescription>
         </>
       ))}
-      [SVS NYC]
-      [1510 Ocean Pkwy]
-      [6464539764]
-      [acahvac@gmail.com]
     </Container>
 
   </Layout>
