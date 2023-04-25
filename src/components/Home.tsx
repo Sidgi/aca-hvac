@@ -60,7 +60,7 @@ export const Home = () => {
 			<HeroText>
 				<Typography variant="h3">Welcome to ACA HVAC</Typography>
 				{/* <Typography variant='h6'>We are a group of talented </Typography> */}
-				<ButtonGroup style={{padding: '10px'}}variant="contained" aria-label="outlined primary button group">
+				<ButtonGroup style={{padding: '11px'}}variant="contained" aria-label="outlined primary button group">
 					<Button variant='contained'>Contact us</Button>
 					<Button variant='outlined'>Schedule a service</Button>
 				</ButtonGroup>
