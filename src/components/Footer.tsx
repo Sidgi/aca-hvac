@@ -12,7 +12,7 @@ const footers = [
 	},
 	{
 	  title: 'Services',
-	  description: [{name:'Heating', link: ''},{name: 'Cooling', link: ''}, {name: 'Testimonials', link:''}, {name: 'Final resource', link:''}],
+	  description: [{name:'Heating', link: '/'},{name: 'Cooling', link: ''}, {name: 'Testimonials', link:''}, {name: 'Final resource', link:''}],
 	},
 	{
 	  title: 'Legal',
