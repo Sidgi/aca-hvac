@@ -12,7 +12,7 @@ const Title = styled(Typography)({
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <CustomizedContainer maxWidth='lg'>
+      <Container maxWidth='lg'>
       <img src={NotFound} style={{width: 'auto', height: '40vh', display:'flex', justifyContent:'center', margin: '0 auto'}}/>
         <div style={{display: 'flex', gap:'2em', alignItems: 'center', marginBottom:'2em', flexWrap:'wrap'}}>
           <hr style={{width: '100%', height: '2%', flex:'1'}}/>
@@ -43,7 +43,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
             </div>
             </Stack>
           </Container>
-      </CustomizedContainer>
+      </Container>
     </Layout>
   )
 }
