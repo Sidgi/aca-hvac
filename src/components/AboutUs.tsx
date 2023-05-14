@@ -62,30 +62,21 @@ export default function AboutUs() {
 	);
 
   return (
-	<>
-		<Container maxWidth="lg">
-		<Box
-			sx={{
-				bgcolor: 'background.paper',
-				pt: 8,
-				pb: 6,
-			}}
+	<Container maxWidth='lg'>
+		<Container maxWidth="sm">
+			<Typography
+			component="h1"
+			variant="h2"
+			align="center"
+			color="text.primary"
+			gutterBottom
 			>
-				<Container maxWidth="sm">
-					<Typography
-					component="h1"
-					variant="h2"
-					align="center"
-					color="text.primary"
-					gutterBottom
-					>
-					Who are we?
-					</Typography>
-					<Typography variant="h5" align="center" color="text.secondary" paragraph>
-						We are ACA HVAC
-					</Typography>
-				</Container>
-			</Box>
+			Who are we?
+			</Typography>
+			<Typography variant="h5" align="center" color="text.secondary" paragraph>
+				We are ACA HVAC
+			</Typography>
+		</Container>
 			<Grid container spacing={2} minHeight={160}>
 				<Grid xs display="flex" justifyContent="center" sx={{ maxWidth: '80%' }}>
 					<Grid sx={{ maxWidth: '70%'}}>
@@ -120,29 +111,20 @@ export default function AboutUs() {
 					</Typography>
 				</Grid>
 			</Grid>
+		<Container maxWidth='lg'>
+		<Typography
+			component="h1"
+			variant="h2"
+			align="center"
+			color="text.primary"
+			gutterBottom
+		>
+			Meet Our Team
+		</Typography>
+		<Typography variant="h5" align="center" color="text.secondary" paragraph>
+			At ACA HVAC, we're proud to have a diverse and talented team of professionals who are passionate about what they do. From our skilled technicians to our knowledgeable sales representatives, everyone on our team is dedicated to delivering the best possible service to our clients.
+		</Typography>
 		</Container>
-	    <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth='lg'>
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Meet Our Team
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-				At ACA HVAC, we're proud to have a diverse and talented team of professionals who are passionate about what they do. From our skilled technicians to our knowledgeable sales representatives, everyone on our team is dedicated to delivering the best possible service to our clients.
-            </Typography>
-          </Container>
-        </Box>
 		<Grid container spacing={2} minHeight={160}>
 			<Grid xs display="flex" justifyContent="center" alignItems="center">
 				
@@ -167,7 +149,7 @@ export default function AboutUs() {
 				</Card>
 			</Grid>
 		</Grid>
-	</>
+	</Container>
 
   );
 }

@@ -46,7 +46,7 @@ export default function Portfolio() {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth="lg">
             <Typography
               component="h1"
               variant="h2"
@@ -67,8 +67,8 @@ export default function Portfolio() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Button variant="outlined" href='/contact'>Contact us</Button>
+              <Button variant='contained'>Schedule a service</Button>
             </Stack>
           </Container>
         </Box>

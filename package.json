@@ -14,14 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "prettier": "prettier --check '**/*.tsx'",
-    "lint": "eslint src",
-    "precommit": "lint-staged"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run precommit"
-    }
+    "prettier": "prettier --check '**/*.tsx'"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
@@ -57,10 +50,6 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/react-google-recaptcha": "^2.1.5",
-    "eslint": "^8.39.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.1",
     "prettier": "^2.8.8",
     "typescript": "^4.8.4"
   }

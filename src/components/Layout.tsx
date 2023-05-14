@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import '../styles/css/globalStyles.css'
 import BasicSpeecDial from '../components/molecules/BasicSpeedDial'
+import { Container } from '@mui/material';
 
 export default function Layout({children}) {
   return (

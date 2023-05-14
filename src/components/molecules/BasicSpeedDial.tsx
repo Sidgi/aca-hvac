@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import SpeedDial, { SpeedDialProps } from '@mui/material/SpeedDial';
@@ -18,22 +18,46 @@ const StyledSpeedDial = styled(SpeedDial)(({ theme }) => ({
 }));
 
 const WrappedSpeedDial = (props: JSX.IntrinsicAttributes & SpeedDialActionProps & {href: string| undefined}) => <SpeedDialAction {...props} />;
-const hcc = (e: React.MouseEvent) => {
 
-  e.target.addEventListener("click", function() {
-    window.scrollTo({top: 0, behavior: "smooth"}); 
-  });
-}
 
-const actions = [
-  { icon: <Email />, name: 'Email', href:'mailto: abc@example.com' },
-  { icon: <ShareIcon />, name: 'Share' },
-  { icon: <PhoneCallback />, name: 'Call us', href:'tel:123-456-7890'},
-  { icon: <ArrowUpwardIcon />, name: 'Scroll up', href:'', onclick: hcc},
-];
+
 
 
 export default function BasicSpeedDial() {
+
+  const [showButton, setShowButton] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+  
+  const actions = [
+    { icon: <Email />, name: 'Email', href:'mailto: abc@example.com' },
+    { icon: <ShareIcon />, name: 'Share' },
+    { icon: <PhoneCallback />, name: 'Call us', href:'tel:123-456-7890'},
+    showButton?{ icon: <ArrowUpwardIcon />, name: 'Scroll up', href:'', onclick: scrollToTop}:null,
+  ];
+
+    const handleScroll = () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 0) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
+
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', scrollToTop);
+    };
+  }, []);
 
   return (
     <Box sx={{ transform: 'translateZ(0px)', flexGrow: 1 }}>
@@ -44,7 +68,7 @@ export default function BasicSpeedDial() {
           direction={"up"}
         >
           {actions.map((action) => (
-            <WrappedSpeedDial
+            action&&<WrappedSpeedDial
               key={action.name}
               icon={action.icon}
               tooltipTitle={action.name}
